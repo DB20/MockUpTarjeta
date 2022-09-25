@@ -1,6 +1,5 @@
 from tokenize import String
 from urllib import request
-from . import create_app
 from flask_restful import Resource, Api
 from flask import Flask, request, jsonify
 import random
@@ -13,9 +12,9 @@ import decimal
 from .Modelos import db, Balance, BalanceSchema
 import json
 
-app = create_app('default')
-app_context = app.app_context()
-app_context.push()
+app = Flask(__name__)     
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///balance_tc.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
 db.create_all()
