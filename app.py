@@ -1,6 +1,6 @@
 from tokenize import String
 from urllib import request
-from microservicio_tarjeta import create_app
+from . import create_app
 from flask_restful import Resource, Api
 from flask import Flask, request, jsonify
 import random
